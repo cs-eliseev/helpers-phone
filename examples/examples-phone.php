@@ -258,3 +258,66 @@ foreach($numbers as $phone) {
     var_dump(Phone::extract($phone, Phone::SIZE_MIN, 10));
 }
 echo PHP_EOL;
+
+// Example: extract
+/**
+ * [
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::exist($phone));
+}
+/**
+ * [
+ *     false,
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     true,
+ *     false,
+ *     true
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::exist($phone, 11));
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     false,
+ *     false,
+ *     true,
+ *     false
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::exist($phone, Phone::SIZE_MIN, 10));
+}
+echo PHP_EOL;
