@@ -62,6 +62,52 @@ git clone https://github.com/cs-eliseev/helpers-phone.git
 
 The class consists of static methods that are conveniently used in any project. See example [examples-phone.php](https://github.com/cs-eliseev/helpers-phone/blob/master/examples/examples-phone.php).
 
+Example data:
+```php
+$numbers = [
+    4400,
+    0064400,
+    '+7 911 00 644 00',
+    '(111) 222-3333',
+    '((111) 222-3333',
+    1112223333,
+    '111 222-3333',
+    '111-222-3333',
+    '(111)2223333',
+    '+112345678-90',
+    '1-8002353551',
+    '123-456-7890   -Hello!',
+    '+1 - 1234567890'
+];
+```
+
+**CLEAR phone number**
+
+Example:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::clear($phone);
+}
+/**
+* [
+*     4400,
+*     0064400,
+*     79110064400,
+*     1112223333,
+*     1112223333,
+*     1112223333,
+*     1112223333,
+*     1112223333,
+*     1112223333,
+*     11234567890,
+*     18002353551,
+*     1234567890,
+*     11234567890
+* ]
+*/
+```
 
 ## License
 
