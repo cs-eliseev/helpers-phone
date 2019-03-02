@@ -96,4 +96,18 @@ class Phone
 
         return $size >= $minSize && $size <= $maxSize ? $string : null;
     }
+
+    /**
+     * Exist phone number to string
+     *
+     * @param $string
+     * @param int $minSize
+     * @param int $maxSize
+     *
+     * @return bool
+     */
+    public static function exist($string, int $minSize = self::SIZE_MIN, int $maxSize = self::SIZE_MAX): bool
+    {
+        return (bool) self::extract($string, $minSize, $maxSize);
+    }
 }
