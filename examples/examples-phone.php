@@ -39,7 +39,9 @@ $numbers = [
  *     '12334456677'
  * ]
  */
-foreach($numbers as $phone) var_dump(Phone::clear($phone));
+foreach($numbers as $phone) {
+    var_dump(Phone::clear($phone));
+}
 echo PHP_EOL;
 
 // Example: format
@@ -60,7 +62,9 @@ echo PHP_EOL;
  *    '+1 (233) 445-66-77',
  * ]
  */
-foreach($numbers as $phone) var_dump(Phone::format($phone));
+foreach($numbers as $phone) {
+    var_dump(Phone::format($phone));
+}
 /**
  * [
  *    '66-77',
@@ -78,7 +82,9 @@ foreach($numbers as $phone) var_dump(Phone::format($phone));
  *    '445-66-77',
  * ]
  */
-foreach($numbers as $phone) var_dump(Phone::format($phone, '$3-$4-$5'));
+foreach($numbers as $phone) {
+    var_dump(Phone::format($phone, '$3-$4-$5'));
+}
 /**
  * [
  *    '66-77',
@@ -96,25 +102,36 @@ foreach($numbers as $phone) var_dump(Phone::format($phone, '$3-$4-$5'));
  *    '1-2334-45-66-77',
  * ]
  */
-foreach($numbers as $phone) var_dump(Phone::format($phone, '$1-$2-$3-$4-$5', true, '(.{2})(.{2})(.{2})(.{4})(.*)'));
+foreach($numbers as $phone) {
+    var_dump(Phone::format($phone, '$1-$2-$3-$4-$5', true, '(.{2})(.{2})(.{2})(.{4})(.*)'));
+}
 /**
  * [
  *    '66-77',
  *    '4 45-66-77',
- *    '1 2334 45-66-77',
- *    '2334 45-66-77',
- *    '2334 45-66-77',
- *    '2334 45-66-77',
- *    '2334 45-66-77',
- *    '2334 45-66-77',
- *    '2334 45-66-77',
- *    '1 2334 45-66-77',
- *    '1 2334 45-66-77',
- *    '2334 45-66-77',
- *    '1 2334 45-66-77',
+ *    '1 23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '1 23 34 45-66-77',
+ *    '1 23 34 45-66-77',
+ *    '23 34 45-66-77',
+ *    '1 23 34 45-66-77',
  * ]
  */
-foreach($numbers as $phone) var_dump(Phone::format($phone, '$1 $2$3 $4-$5-$6', true, '(.{2})(.{2})(.{2})(.{2})(.{2})(.*)', ['$6' => '1$', '$5' => '2$', '$4' => '3$', '$3' => '4$', '$2' => '5$', '$1' => '6$']));
+foreach($numbers as $phone) {
+    var_dump(Phone::format($phone, '$1 $2 $3 $4-$5-$6', true, '(.{2})(.{2})(.{2})(.{2})(.{2})(.*)', [
+        '$6' => '1$',
+        '$5' => '2$',
+        '$4' => '3$',
+        '$3' => '4$',
+        '$2' => '5$',
+        '$1' => '6$'
+    ]));
+}
 /**
  * [
  *    '6677',
