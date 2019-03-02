@@ -25,7 +25,6 @@ $numbers = [
  * [
  *     '6677',
  *     '4456677',
- *     '4456677',
  *     '12334456677',
  *     '2334456677',
  *     '2334456677',
@@ -194,5 +193,68 @@ foreach($numbers as $phone) {
  */
 foreach($numbers as $phone) {
     var_dump(Phone::hide($phone, '8-*** ***-**-$6'));
+}
+echo PHP_EOL;
+
+// Example: extract
+/**
+ * [
+ *     null,
+ *     '4456677',
+ *     '12334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '12334456677',
+ *     '12334456677',
+ *     '2334456677',
+ *     '12334456677'
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::extract($phone));
+}
+/**
+ * [
+ *     null,
+ *     null,
+ *     '12334456677',
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     '12334456677',
+ *     '12334456677',
+ *     null,
+ *     '12334456677'
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::extract($phone, 11));
+}
+/**
+ * [
+ *     null,
+ *     '4456677',
+ *     null,
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     null,
+ *     null,
+ *     '2334456677',
+ *     null
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::extract($phone, Phone::SIZE_MIN, 10));
 }
 echo PHP_EOL;
