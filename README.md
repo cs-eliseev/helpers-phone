@@ -94,7 +94,6 @@ foreach($numbers as $phone)
 * [
 *     '6677',
 *     '4456677',
-*     '4456677',
 *     '12334456677',
 *     '2334456677',
 *     '2334456677',
@@ -299,6 +298,86 @@ foreach($numbers as $phone)
  *    '8-*** ***-**-77',
  *    '8-*** ***-**-77',
  *    '8-*** ***-**-77',
+ * ]
+ */
+```
+
+**EXTRACT phone number**
+
+Example:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::extract($phone);
+}
+/**
+ * [
+ *     null,
+ *     '4456677',
+ *     '12334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '12334456677',
+ *     '12334456677',
+ *     '2334456677',
+ *     '12334456677'
+ * ]
+ */
+```
+
+Change check min size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::extract($phone, 11);
+}
+/**
+ * [
+ *     null,
+ *     null,
+ *     '12334456677',
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     null,
+ *     '12334456677',
+ *     '12334456677',
+ *     null,
+ *     '12334456677'
+ * ]
+ */
+```
+
+Change check max size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::extract($phone, Phone::SIZE_MIN, 10);
+}
+/**
+ * [
+ *     null,
+ *     '4456677',
+ *     null,
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     '2334456677',
+ *     null,
+ *     null,
+ *     '2334456677',
+ *     null
  * ]
  */
 ```
