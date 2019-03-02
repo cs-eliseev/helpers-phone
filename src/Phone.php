@@ -12,6 +12,7 @@ namespace cse\helpers;
 class Phone
 {
     const FORMAT_DEFAULT = '+$1 ($2) $3-$4-$5';
+    const FORMAT_HIDE =  '+$1 ($2) ***-**-$5';
     const MASK = '?';
     const PATTERN = '(.{2})(.{2})(.{3})(.{3})(.*)';
     const REVERT_MASK = ['$5' => '1$', '$4' => '2$', '$3' => '3$', '$2' => '4$', '$1' => '5$'];
@@ -60,5 +61,18 @@ class Phone
         }
 
         return trim(strrev($result));
+    }
+
+    /**
+     * Hide phone number
+     *
+     * @param $phone
+     * @param string $format
+     *
+     * @return string
+     */
+    public static function hide($phone, $format = self::FORMAT_HIDE): string
+    {
+        return self::format($phone, $format);
     }
 }
