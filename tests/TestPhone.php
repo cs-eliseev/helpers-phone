@@ -205,4 +205,73 @@ class TestPhone extends TestCase
             ],
         ];
     }
+
+
+    /**
+     * @param $phone
+     * @param string $format
+     * @param string $pattern
+     * @param array $mask
+     * @param string $expected
+     *
+     * @dataProvider providerHide
+     */
+    public function testHide($phone, string $format, string $expected): void
+    {
+        $this->assertEquals($expected, Phone::hide($phone, $format));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerHide(): array
+    {
+        return [
+            [
+                4455,
+                Phone::FORMAT_HIDE,
+                '***-**-55'
+            ],
+            [
+                3344455,
+                Phone::FORMAT_HIDE,
+                '***-**-55'
+            ],
+            [
+                '+1 222 33 444 55',
+                Phone::FORMAT_HIDE,
+                '+1 (222) ***-**-55'
+            ],
+            [
+                '(222) 333-4455',
+                Phone::FORMAT_HIDE,
+                '(222) ***-**-55'
+            ],
+            [
+                '((222) 333-44-55',
+                Phone::FORMAT_HIDE,
+                '(222) ***-**-55'
+            ],
+            [
+                12223334455,
+                '**-***-$5',
+                '**-***-55'
+            ],
+            [
+                '222 333-4455',
+                '$2',
+                '222'
+            ],
+            [
+                '222-333-44-55',
+                '$1',
+                ''
+            ],
+            [
+                '(222)3334455',
+                Phone::FORMAT_HIDE,
+                '(222) ***-**-55'
+            ],
+        ];
+    }
 }
