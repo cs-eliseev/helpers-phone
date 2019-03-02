@@ -13,9 +13,13 @@ class Phone
 {
     const FORMAT_DEFAULT = '+$1 ($2) $3-$4-$5';
     const FORMAT_HIDE =  '+$1 ($2) ***-**-$5';
+
     const MASK = '?';
     const PATTERN = '(.{2})(.{2})(.{3})(.{3})(.*)';
     const REVERT_MASK = ['$5' => '1$', '$4' => '2$', '$3' => '3$', '$2' => '4$', '$1' => '5$'];
+
+    const SIZE_MIN = 7;
+    const SIZE_MAX = 14;
 
     /**
      * Clear phone number
@@ -74,5 +78,22 @@ class Phone
     public static function hide($phone, $format = self::FORMAT_HIDE): string
     {
         return self::format($phone, $format);
+    }
+
+    /**
+     * Extract phone number from string
+     *
+     * @param $string
+     * @param int $minSize
+     * @param int $maxSize
+     *
+     * @return null|string
+     */
+    public static function extract($string, int $minSize = self::SIZE_MIN, int $maxSize = self::SIZE_MAX): ?string
+    {
+        $string = self::clear($string);
+        $size = strlen($string);
+
+        return $size >= $minSize && $size <= $maxSize ? $string : null;
     }
 }
