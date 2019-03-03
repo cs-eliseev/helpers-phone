@@ -5,6 +5,19 @@ The helpers allows you manipulating, extract, detecting PHONE.
 
 Project repository: https://github.com/cs-eliseev/helpers-phone
 
+```php
+switch (true) {
+    case Phone::is($phone):
+        break;
+    case Phone::exist($phone):
+        $phone = Phone::extract($phone);
+        break;
+    default:
+        new Exception('Phone is not exist');
+}
+
+$phone = Phone::format($phone);
+```
 ***
 
 ## Introduction
