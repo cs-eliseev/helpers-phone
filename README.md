@@ -462,6 +462,86 @@ foreach($numbers as $phone)
  */
 ```
 
+**IS phone number**
+
+Example:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::is($phone);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
+Change check min size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::is($phone, 11);
+}
+/**
+ * [
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
+Change check max size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones = Phone::is($phone, Phone::SIZE_MIN, 10);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
 
 ## License
 
