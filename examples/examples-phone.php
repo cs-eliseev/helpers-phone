@@ -259,7 +259,7 @@ foreach($numbers as $phone) {
 }
 echo PHP_EOL;
 
-// Example: extract
+// Example: exist
 /**
  * [
  *     false,
@@ -319,5 +319,68 @@ foreach($numbers as $phone) {
  */
 foreach($numbers as $phone) {
     var_dump(Phone::exist($phone, Phone::SIZE_MIN, 10));
+}
+echo PHP_EOL;
+
+// Example: is
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::is($phone));
+}
+/**
+ * [
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::is($phone, 11));
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false
+ * ]
+ */
+foreach($numbers as $phone) {
+    var_dump(Phone::is($phone, Phone::SIZE_MIN, 10));
 }
 echo PHP_EOL;
