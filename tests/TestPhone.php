@@ -415,4 +415,75 @@ class TestPhone extends TestCase
             ],
         ];
     }
+
+
+    /**
+     * @param $phone
+     * @param int $sizeMin
+     * @param int $sizeMax
+     * @param $expected
+     *
+     * @dataProvider providerIs
+     */
+    public function testIs($phone, int $sizeMin, int $sizeMax, $expected): void
+    {
+        $this->assertEquals($expected, Phone::is($phone, $sizeMin, $sizeMax));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerIs(): array
+    {
+        return [
+            [
+                4455,
+                Phone::SIZE_MIN,
+                Phone::SIZE_MAX,
+                false
+            ],
+            [
+                3344455,
+                Phone::SIZE_MIN,
+                Phone::SIZE_MAX,
+                true
+            ],
+            [
+                3344455,
+                Phone::SIZE_MAX,
+                Phone::SIZE_MAX,
+                false
+            ],
+            [
+                '+1 222 33 444 55',
+                Phone::SIZE_MIN,
+                Phone::SIZE_MAX,
+                false
+            ],
+            [
+                '(222) 333-4455',
+                Phone::SIZE_MIN,
+                Phone::SIZE_MIN,
+                false
+            ],
+            [
+                '((222) 333-44-55',
+                Phone::SIZE_MIN,
+                Phone::SIZE_MAX,
+                false
+            ],
+            [
+                '222-333-4455   -Hello!',
+                Phone::SIZE_MIN,
+                Phone::SIZE_MAX,
+                false
+            ],
+            [
+                '+1 - 2223334455 Hello 67',
+                Phone::SIZE_MIN,
+                11,
+                false
+            ],
+        ];
+    }
 }
