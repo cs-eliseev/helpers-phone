@@ -110,4 +110,19 @@ class Phone
     {
         return (bool) self::extract($string, $minSize, $maxSize);
     }
+
+    /**
+     * Check phone number
+     *
+     * @param $phone
+     * @param int $minSize
+     * @param int $maxSize
+     *
+     * @return bool
+     */
+    public static function is($phone, int $minSize = self::SIZE_MIN, int $maxSize = self::SIZE_MAX): bool
+    {
+        $size = strlen((string) $phone);
+        return $size >= $minSize && $size <= $maxSize ? self::exist($phone, $minSize, $maxSize) : false;
+    }
 }
