@@ -1,6 +1,8 @@
 PHONE CSE HELPERS
 =======
 
+[![Travis (.org)](https://img.shields.io/travis/cs-eliseev/helpers-phone.svg?style=flat-square)](https://travis-ci.org/cs-eliseev/helpers-phone)
+
 [![Packagist](https://img.shields.io/packagist/v/cse/helpers-phone.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
 [![Packagist](https://img.shields.io/packagist/l/cse/helpers-phone.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-phone/blob/master/LICENSE.md)
