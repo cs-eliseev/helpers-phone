@@ -7,11 +7,11 @@ class TestPhone extends TestCase
 {
     /**
      * @param $phone
-     * @param string $expected
+     * @param $expected
      *
      * @dataProvider providerClear
      */
-    public function testClear($phone, string $expected): void
+    public function testClear($phone, $expected): void
     {
         $this->assertEquals($expected, Phone::clear($phone));
     }
