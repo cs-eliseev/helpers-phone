@@ -1,6 +1,11 @@
 PHONE CSE HELPERS
 =======
 
+[![Packagist](https://img.shields.io/packagist/v/cse/helpers-phone.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
+[![Packagist](https://img.shields.io/packagist/l/cse/helpers-phone.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-phone/blob/master/LICENSE.md)
+[![GitHub repo size](https://img.shields.io/github/repo-size/cs-eliseev/helpers-phone.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-phone/archive/master.zip)
+
 The helpers allows you manipulating, extract, detecting PHONE.
 
 Project repository: https://github.com/cs-eliseev/helpers-phone
