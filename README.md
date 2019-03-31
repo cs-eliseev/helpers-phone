@@ -3,6 +3,7 @@ PHONE CSE HELPERS
 
 [![Travis (.org)](https://img.shields.io/travis/cs-eliseev/helpers-phone.svg?style=flat-square)](https://travis-ci.org/cs-eliseev/helpers-phone)
 [![Codecov](https://img.shields.io/codecov/c/github/cs-eliseev/helpers-phone.svg?style=flat-square)](https://codecov.io/gh/cs-eliseev/helpers-email)
+[![Scrutinizer code quality](https://img.shields.io/scrutinizer/g/cs-eliseev/helpers-phone.svg?style=flat-square)](https://scrutinizer-ci.com/g/cs-eliseev/helpers-phone/?branch=master)
 
 [![Packagist](https://img.shields.io/packagist/v/cse/helpers-phone.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-phone)
