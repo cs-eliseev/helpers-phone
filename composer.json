@@ -1,7 +1,7 @@
 {
     "name": "cse/helpers-phone",
     "description": "The helpers allows you manipulating, extract, detecting phone.",
-    "keywords": ["phone", "cse", "cs-eliseev", "framework", "basic", "library", "project"],
+    "keywords": ["phone","phones", "telephone", "tel", "cse", "collection", "collections", "tool", "tools", "utilities", "utils", "utility", "helper", "helpers", "library", "framework"],
     "homepage": "https://github.com/cs-eliseev/helpers-phone",
     "type": "library",
     "license": "MIT",
