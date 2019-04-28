@@ -14,6 +14,7 @@ The helpers allows you manipulating, extract, detecting PHONE.
 
 Project repository: https://github.com/cs-eliseev/helpers-phone
 
+**DEMO**
 ```php
 switch (true) {
     case Phone::is($phone):
@@ -27,6 +28,7 @@ switch (true) {
 
 $phone = Phone::format($phone);
 ```
+
 ***
 
 ## Introduction
@@ -113,7 +115,7 @@ Example:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::clear($phone);
+    $phones[] = Phone::clear($phone);
 }
 /**
 * [
@@ -141,7 +143,7 @@ Example:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::format($phone);
+    $phones[] = Phone::format($phone);
 }
 /**
  * [
@@ -167,7 +169,7 @@ Not use mask:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::format($phone, Phone::FORMAT_DEFAULT, false);
+    $phones[] = Phone::format($phone, Phone::FORMAT_DEFAULT, false);
 }
 /**
  * [
@@ -193,7 +195,7 @@ Change format phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::format($phone, '$3-$4-$5');
+    $phones[] = Phone::format($phone, '$3-$4-$5');
 }
 /**
  * [
@@ -219,7 +221,7 @@ Change pattern format phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::format($phone, '$1-$2-$3-$4-$5', true, '(.{2})(.{2})(.{2})(.{4})(.*)');
+    $phones[] = Phone::format($phone, '$1-$2-$3-$4-$5', true, '(.{2})(.{2})(.{2})(.{4})(.*)');
 }
 /**
  * [
@@ -245,7 +247,7 @@ Change revert format phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::format($phone, '$1 $2 $3 $4-$5-$6', true,'(.{2})(.{2})(.{2})(.{2})(.{2})(.*)', [
+    $phones[] = Phone::format($phone, '$1 $2 $3 $4-$5-$6', true,'(.{2})(.{2})(.{2})(.{2})(.{2})(.*)', [
         '$6' => '1$',
         '$5' => '2$',
         '$4' => '3$',
@@ -280,7 +282,7 @@ Example:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::hide($phone);
+    $phones[] = Phone::hide($phone);
 }
 /**
  * [
@@ -306,7 +308,7 @@ Change format hide phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::hide($phone, '8-*** ***-**-$6');
+    $phones[] = Phone::hide($phone, '8-*** ***-**-$6');
 }
 /**
  * [
@@ -327,6 +329,166 @@ foreach($numbers as $phone)
  */
 ```
 
+**IS phone number**
+
+Example:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::is($phone);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
+Change check min size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::is($phone, 11);
+}
+/**
+ * [
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     true,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
+Change check max size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::is($phone, Phone::SIZE_MIN, 10);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false
+ * ]
+ */
+```
+
+**EXIST phone number**
+
+Example:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::exist($phone);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true
+ * ]
+ */
+```
+
+Change check min size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::exist($phone, 11);
+}
+/**
+ * [
+ *     false,
+ *     false,
+ *     true,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     false,
+ *     true,
+ *     true,
+ *     false,
+ *     true
+ * ]
+ */
+```
+
+Change check max size phone number:
+```php
+$phones = [];
+foreach($numbers as $phone)
+{
+    $phones[] = Phone::exist($phone, Phone::SIZE_MIN, 10);
+}
+/**
+ * [
+ *     false,
+ *     true,
+ *     false,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     true,
+ *     false,
+ *     false,
+ *     true,
+ *     false
+ * ]
+ */
+```
+
 **EXTRACT phone number**
 
 Example:
@@ -334,7 +496,7 @@ Example:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::extract($phone);
+    $phones[] = Phone::extract($phone);
 }
 /**
  * [
@@ -360,7 +522,7 @@ Change check min size phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::extract($phone, 11);
+    $phones[] = Phone::extract($phone, 11);
 }
 /**
  * [
@@ -386,7 +548,7 @@ Change check max size phone number:
 $phones = [];
 foreach($numbers as $phone)
 {
-    $phones = Phone::extract($phone, Phone::SIZE_MIN, 10);
+    $phones[] = Phone::extract($phone, Phone::SIZE_MIN, 10);
 }
 /**
  * [
@@ -403,166 +565,6 @@ foreach($numbers as $phone)
  *     null,
  *     '2334456677',
  *     null
- * ]
- */
-```
-
-**EXIST phone number**
-
-Example:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::exist($phone);
-}
-/**
- * [
- *     false,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true
- * ]
- */
-```
-
-Change check min size phone number:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::exist($phone, 11);
-}
-/**
- * [
- *     false,
- *     false,
- *     true,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     true,
- *     true,
- *     false,
- *     true
- * ]
- */
-```
-
-Change check max size phone number:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::exist($phone, Phone::SIZE_MIN, 10);
-}
-/**
- * [
- *     false,
- *     true,
- *     false,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     false,
- *     false,
- *     true,
- *     false
- * ]
- */
-```
-
-**IS phone number**
-
-Example:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::is($phone);
-}
-/**
- * [
- *     false,
- *     true,
- *     false,
- *     true,
- *     false,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     true,
- *     false,
- *     false
- * ]
- */
-```
-
-Change check min size phone number:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::is($phone, 11);
-}
-/**
- * [
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     true,
- *     true,
- *     false,
- *     false
- * ]
- */
-```
-
-Change check max size phone number:
-```php
-$phones = [];
-foreach($numbers as $phone)
-{
-    $phones = Phone::is($phone, Phone::SIZE_MIN, 10);
-}
-/**
- * [
- *     false,
- *     true,
- *     false,
- *     false,
- *     false,
- *     true,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false,
- *     false
  * ]
  */
 ```
@@ -592,7 +594,7 @@ phpunit --configuration PATH/TO/PROJECT/phpunit.xml
 
 ## License
 
-The CSE HELPERS PHONE is open-source PHP library licensed under the MIT license. Please see [License File](https://github.com/cs-eliseev/helpers-phone/blob/master/LICENSE.md) for more information.
+The PHONE CSE HELPERS is open-source PHP library licensed under the MIT license. Please see [License File](https://github.com/cs-eliseev/helpers-phone/blob/master/LICENSE.md) for more information.
 
 ***
 
